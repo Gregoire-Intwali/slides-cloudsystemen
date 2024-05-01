@@ -1,0 +1,80 @@
+<!doctype htmlopzij>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Labo 18</title>
+    <link rel="stylesheet" href="../reveal.js/dist/reset.css">
+    <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="../reveal.js/dist/theme/black.css">
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="../reveal.js/plugin/highlight/monokai.css">
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                Act
+                <aside class="notes">
+                    <ul>
+                        <li>kunnen "doen alsof" event plaatsvindt om juiste workflows te runnen</li>
+                        <li>kunnen dit automatiseren met een heel korte Git hook</li>
+                        <li>vermijdt ontdubbeling tussen Git hooks en Github Actions</li>
+                    </ul>
+                </aside>
+            </section>
+            <section>
+                Installeer en probeer met de twee workflows van vorig labo.
+            </section>
+            <section>
+                Guides
+                <aside class="notes">
+                    3, 4, 5, secrets.
+                    5 heeft vreemde volgorde.
+                </aside>
+            </section>
+            <section>
+                Web hooks
+                <aside class="notes">
+                    <ul>
+                        <li>"reverse API call"</li>
+                        <li>handig in CI/CD: "build is gelukt" ⇒ kan bijvoorbeeld container updaten</li>
+                    </ul>
+                </aside>
+            </section>
+            <section>
+                Opdracht
+            </section>
+            <section>
+                <ul>
+                    <li>lokale web hook (om te testen)</li>
+                    <li>vervolledig de code op DigitAP</li>
+                    <li>voer de workflow uit via Act</li>
+                    <ul><li>lees de opties via <code>act --help</code></li></ul>
+                    <li>gebruik je kennis over Docker</li>
+                    <li>hoe zie je dat de web hook succesvol is gebruikt...?</li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <script src="../reveal.js/dist/reveal.js"></script>
+    <script src="../reveal.js/plugin/notes/notes.js"></script>
+    <script src="../reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="../reveal.js/plugin/highlight/highlight.js"></script>
+    <script>
+        // More info about initialization & config:
+        // - https://revealjs.com/initialization/
+        // - https://revealjs.com/config/
+        Reveal.initialize({
+            hash: true,
+
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+        });
+    </script>
+</body>
+
+</html>
