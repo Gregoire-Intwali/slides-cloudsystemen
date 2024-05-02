@@ -1,0 +1,113 @@
+<!doctype htmlopzij>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Labo 18</title>
+    <link rel="stylesheet" href="../reveal.js/dist/reset.css">
+    <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="../reveal.js/dist/theme/black.css">
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="../reveal.js/plugin/highlight/monokai.css">
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                Laptops dicht
+            </section>
+            <section>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/W_VV2Fx32_Y?si=wJzrpgRmPiJITIJS"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <aside class="notes">
+                    In essentie: individuele functies die online worden geplaatst. Achterliggende omgeving weg geabstraheerd en aanroepen gebeurt over HTTP(s). Ik zou spreken over "server-hidden".
+                </aside>
+            </section>
+            <section>
+                <img src="./images/Kool-aid.webp" />
+                <aside class="notes">
+                    <ul class="pros">
+                        <li>schaalbaar en robuust</li>
+                        <li>weinig overhead en onderhoud</li>
+                        <li>pay-as-you-go</li>
+                    </ul>
+                    <ul class="cons">
+                        <li>cold starts</li>
+                        <li>kan andere organisatie code vereisen</li>
+                        <li>soms (liefst zelden!) is code nu eenmaal platformspecifiek</li>
+                        <li>pay-as-you-go</li>
+                    </ul>
+                </aside>
+            </section>
+            <section>
+                <img src="./images/faasd.png" />
+                <aside class="notes">
+                    <ul>
+                        <li>functions as a service (SaaS, PaaS, IaaS kwamen eerder al)</li>
+                        <li>AWS Lambda</li>
+                        <li>Azure functions</li>
+                        <li>Google Cloud functions</li>
+                        <li>...</li>
+                        <li>faasd = afgeslankte versie OpenFaaS</li>
+                        <li>overdraagbare concepten</li>
+                        <li>minder vendor lock-in</li>
+                        <li>geen gedoe met credits</li>
+                    </ul>
+                </aside>
+            </section>
+            <section>
+                Installatie-opdrachten
+            </section>
+            <section>
+                multipass
+                <aside class="notes">
+                    <ul>
+                        <li>lokale VM, maar...</li>
+                        <li>werkt ongeveer zoals setup VPS</li>
+                        <li>kan een "cloud-init" accepteren</li>
+                    </ul>
+                </aside>
+            </section>
+            <section>
+                faas CLI
+            </section>
+            <section>
+                OpenFaaS web UI
+                <aside class="notes">Maak een paar functies (haal van de marketplace) en test uit.</li>
+            </section>
+            <section>
+                via CLI
+                <aside class="notes">Ofwel via curl, ofwel via faas invoke</aside>
+            </section>
+            <section>
+                Serverless functies schrijven
+                <aside class="notes">
+                    Een hello world type voorbeeldje met NodeJS?
+                </aside>
+            </section>
+            <!-- TODO: link met web hooks toelichten, lastigere scenario's (configuratie, secrets, databank, troubleshooten, async, testing, integratie met GH Actions (als dat lukt via Act...)) -->
+        </div>
+    </div>
+
+    <script src="../reveal.js/dist/reveal.js"></script>
+    <script src="../reveal.js/plugin/notes/notes.js"></script>
+    <script src="../reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="../reveal.js/plugin/highlight/highlight.js"></script>
+    <script>
+        // More info about initialization & config:
+        // - https://revealjs.com/initialization/
+        // - https://revealjs.com/config/
+        Reveal.initialize({
+            hash: true,
+
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+        });
+    </script>
+</body>
+
+</html>
