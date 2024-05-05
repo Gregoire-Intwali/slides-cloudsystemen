@@ -24,21 +24,22 @@
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 <aside class="notes">
-                    In essentie: individuele functies die online worden geplaatst. Achterliggende omgeving weg geabstraheerd en aanroepen gebeurt over HTTP(s). Ik zou spreken over "server-hidden".
+                    In essentie: individuele functies die online worden geplaatst. Achterliggende omgeving weg
+                    geabstraheerd en aanroepen gebeurt over HTTP(s), vaak als respons op events.
+                    Ik zou spreken over "server-hidden".
                 </aside>
             </section>
             <section>
                 <img src="./images/Kool-aid.webp" />
                 <aside class="notes">
                     <ul class="pros">
-                        <li>schaalbaar en robuust</li>
+                        <li>schaalbaar op korte termijn en zeer robuust</li>
                         <li>weinig overhead en onderhoud</li>
                         <li>pay-as-you-go</li>
                     </ul>
                     <ul class="cons">
                         <li>cold starts</li>
-                        <li>kan andere organisatie code vereisen</li>
-                        <li>soms (liefst zelden!) is code nu eenmaal platformspecifiek</li>
+                        <li>kan andere organisatie code vereisen (soms elegant, soms overkill)</li>
                         <li>pay-as-you-go</li>
                     </ul>
                 </aside>
@@ -51,7 +52,7 @@
                         <li>AWS Lambda</li>
                         <li>Azure functions</li>
                         <li>Google Cloud functions</li>
-                        <li>...</li>
+                        <li>(zekere hoeveelheid gratis rekentijd op elke dienst)</li>
                         <li>faasd = afgeslankte versie OpenFaaS</li>
                         <li>overdraagbare concepten</li>
                         <li>minder vendor lock-in</li>
@@ -60,36 +61,61 @@
                 </aside>
             </section>
             <section>
-                Installatie-opdrachten
-            </section>
-            <section>
-                multipass
-                <aside class="notes">
-                    <ul>
-                        <li>lokale VM, maar...</li>
-                        <li>werkt ongeveer zoals setup VPS</li>
-                        <li>kan een "cloud-init" accepteren</li>
-                    </ul>
-                </aside>
-            </section>
-            <section>
-                faas CLI
+                <section>
+                    Installatie-opdrachten
+                </section>
+                <section>
+                    multipass
+                    <aside class="notes">
+                        <ul>
+                            <li>lokale VM, maar...</li>
+                            <li>werkt ongeveer zoals setup VPS</li>
+                            <li>kan een "cloud-init" accepteren</li>
+                        </ul>
+                    </aside>
+                </section>
+                <section>
+                    faas CLI
+                </section>
             </section>
             <section>
                 OpenFaaS web UI
-                <aside class="notes">Maak een paar functies (haal van de marketplace) en test uit.</li>
+                <aside class="notes">Maak een paar functies (getnodeinfo,...) en test uit.</li>
             </section>
             <section>
                 via CLI
                 <aside class="notes">Ofwel via curl, ofwel via faas invoke</aside>
             </section>
             <section>
-                Serverless functies schrijven
+                Serverless hello world
+            </section>
+            <section>
+                <ul>
+                    <li>Maak nu een eigen hello, world met de <code>csharp</code> template</li>
+                    <li>Noem de functie helloworldcsharp</li>
+                </ul>
+            </section>
+            <section>
+                Werken met een database
                 <aside class="notes">
-                    Een hello world type voorbeeldje met NodeJS?
+                    Aantal technische details over OpenFaaS, dus heb dit al voorbereid via cloud-config.txt. Belangrijke puntjes: kan de stack aanpassen en als je diep genoeg graaft, vind je bekende concepten. Connection pooling ligt moeilijker (maar is ook minder aan de orde).
                 </aside>
             </section>
-            <!-- TODO: link met web hooks toelichten, lastigere scenario's (configuratie, secrets, databank, troubleshooten, async, testing, integratie met GH Actions (als dat lukt via Act...)) -->
+            <section>
+                <ul>
+                    <li>schrijf een serverless NodeJS-functie <code>dbtest</code> die verbindt met deze database en een query doet</li>
+                    <li>gebruik de <code>mysql2</code> package van npm</li>
+                    <li>je moet host <code>10.62.0.1</code> gebruiken</li>
+                    <li>je moet in dit geval de <code>require</code> syntax gebruiken</li>
+                    <li>deploy je functie en test of je ze zonder problemen kan oproepen</li>
+                </ul>
+            </section>
+            <section>
+                Omgevingsvariabelen en secrets
+            </section>
+            <section>
+                Pas je functie <code>dbtest</code> aan. Plaats de host in een omgevingsvariabele. Registreer de credentials als secrets.
+            </section>
         </div>
     </div>
 
