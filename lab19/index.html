@@ -78,44 +78,6 @@
                     faas CLI
                 </section>
             </section>
-            <section>
-                OpenFaaS web UI
-                <aside class="notes">Maak een paar functies (getnodeinfo,...) en test uit.</li>
-            </section>
-            <section>
-                via CLI
-                <aside class="notes">Ofwel via curl, ofwel via faas invoke</aside>
-            </section>
-            <section>
-                Serverless hello world
-            </section>
-            <section>
-                <ul>
-                    <li>Maak nu een eigen hello, world met de <code>csharp</code> template</li>
-                    <li>Noem de functie helloworldcsharp</li>
-                </ul>
-            </section>
-            <section>
-                Werken met een database
-                <aside class="notes">
-                    Aantal technische details over OpenFaaS, dus heb dit al voorbereid via cloud-config.txt. Belangrijke puntjes: kan de stack aanpassen en als je diep genoeg graaft, vind je bekende concepten. Connection pooling ligt moeilijker (maar is ook minder aan de orde).
-                </aside>
-            </section>
-            <section>
-                <ul>
-                    <li>schrijf een serverless NodeJS-functie <code>dbtest</code> die verbindt met deze database en een query doet</li>
-                    <li>gebruik de <code>mysql2</code> package van npm</li>
-                    <li>je moet host <code>10.62.0.1</code> gebruiken</li>
-                    <li>je moet in dit geval de <code>require</code> syntax gebruiken</li>
-                    <li>deploy je functie en test of je ze zonder problemen kan oproepen</li>
-                </ul>
-            </section>
-            <section>
-                Omgevingsvariabelen en secrets
-            </section>
-            <section>
-                Pas je functie <code>dbtest</code> aan. Plaats de host in een omgevingsvariabele. Registreer de credentials als secrets.
-            </section>
         </div>
     </div>
 
