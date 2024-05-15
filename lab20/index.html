@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Labo 20</title>
+    <title>Labo 20+</title>
     <link rel="stylesheet" href="../reveal.js/dist/reset.css">
     <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
     <link rel="stylesheet" href="../reveal.js/dist/theme/black.css">
@@ -54,7 +54,7 @@
                         <li>surfen naar de URL in de web UI</li>
                         <li><code>faas-cli invoke --help</code></li>
                         <li><code>curl localhost:8080/function/nodeinfo</code></li>
-                        <li>kan dus ook gewoon met <code>fetch</code> in JS</li>
+                        <li>kan dus ook gewoon met <code>fetch</code> in JS</li>-->
                     </ul>
                 </aside>
             </section>
@@ -67,17 +67,13 @@
                     <ul>
                         <li>uitleg gaat heel snel, niet erg, heel breed beeld is genoeg</li>
                         <li>doelstelling: nabouwen, ook online toegankelijk maken</li>
-                        <ul>
-                            <li>https://www.npmjs.com/package/transparent-background als alternatief voor rembg?</li>
-                            <li>vereist Python... is te doen, maar niet met gegeven template</li>
-
-                        </ul>
                         <li>technologie zal anders zijn, maar concept is zowat zelfde</li>
                         <li>zullen ook bekijken hoe we kunnen uitbreiden (auth, chaining van filters)</li>
                     </ul>
                 </aside>
             </section>
             <section>
+                Roadmap:
                 <ol>
                     <li><strong>een</strong> functie kunnen bouwen</li>
                     <li>eerste testcode toevoegen</li>
@@ -89,8 +85,9 @@
                     <li>test updaten</li>
                     <li>integreren met Github Actions</li>
                     <li>web interface voorzien</li>
-                    <li>ondersteuning voor Python voorzien</li>
                     <li>aaneenschakeling van filters</li>
+                    <li>ondersteuning voor Python voorzien</li>
+                    <li>rembg toevoegen</li>
                 </ol>
             </section>
             <section>
@@ -107,14 +104,32 @@
                 <ul>
                     <li>Maak nu een eigen hello, world met de <code>csharp</code> template</li>
                     <li>Noem de functie helloworldcsharp</li>
+                    <li>Gebruik de taal <code>csharp</code> (ook al geeft die een waarschuwing)</li>
                 </ul>
             </section>
-            <section>Mee volgen: testing</section>
-            <section>Base 64 encoding</section>
+            <section>Mee volgen: testing
+                <aside class="notes">
+                    <ul>
+                        <li>Serverless functie image-processing maken.</li>
+                        <li>Mocha en chai toevoegen.</li>
+                        <li>Test.js voorzien die bestaande functionaliteit handler test.</li>
+                    </ul>
+                </aside>
+            </section>
+            <section>Base 64 encoding
+                <aside class="notes">
+                    <ul>
+                        <li>CLI: <code>base64 BINAIRBESTAND</code> (<code>--decode</code> voor omkering)</li>
+                        <li>NodeJS: <code>Buffer.from(Base64String, 'base64')</code> en
+                            <code>Buffer.toString('base64')</code>
+                    </ul>
+                </aside>
+            </section>
             <section>Opdracht: pas de code en test aan, zodat de base 64 gewoon wordt teruggestuurd en de test dit
                 controleert</section>
-            <section>Jimp
-                <aside class="notes">
+            <section>Logs<aside class="notes">Laat zien dat er wel output is.</aside>
+            </section>
+            <section>Jimp<aside class="notes">
                     <ol>
                         <li>lokaal installeren</li>
                         <li>uittesten</li>
@@ -124,16 +139,34 @@
             <section>Opdracht: pas de testcode aan voor greyscale operatie</section>
             <section>Authenticatie
                 <aside class="notes">
-                    Oproep: <code>curl http://localhost:8080/function/background-removal -H "Authorization: Bearer abcd"</code>
+                    Oproep: <code>curl http://localhost:8080/function/image-processing -H "Authorization: Bearer
+                        abcd"</code> of <code>faas-cli invoke image-processing -H "Authorization=Bearer abcd"</code>
                 </aside>
             </section>
-            <section>Opdracht: voeg authenticatie toe. Gebruik de eerdere "testcode web hook".</section>
+            <section>Opdracht: voeg authenticatie toe. Gebruik de eerdere "testcode web hook" als inspiratiebron.
+            </section>
             <section>Secret toevoegen
                 <aside class="notes">
                     Secret is niet gedefinieerd tijdens test. Omgevingsvariabele gebruiken om te herkennen!
                 </aside>
             </section>
-            <section>Integreren met Github Actions</section>
+            <section>Integreren met Github Actions
+                <aside class="info">Eigenlijk gewoon toevoeging uit cursustekst doen (onder "bouwen in een pipeline")
+                </aside>
+            </section>
+
+            <!-- begin met het loggen van de headers
+                gewoon console.debug(event.headers) toevoegen
+                laten zien via faas-cli logs
+                dan https://docs.openfaas.com/reference/authentication/ → curl uittesten 
+                commando: curl http://localhost:8080/function/background-removal -H "Authorization: Bearer abcd"
+                code toevoegen om enkel dat stukje op te halen (gebruik voorbeeld van op DigitAP)
+                checken dat het werkt
+                switchen naar echt secret
+            -->
+
+            <!-- uitleggen hoe bare dockerfile te gebruiken als template? -->
+            <!-- zelf transparantie in orde laten brengen? -->
 
         </div>
     </div>
