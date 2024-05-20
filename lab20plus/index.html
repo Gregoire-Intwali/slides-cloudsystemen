@@ -133,10 +133,10 @@
                     <ol>
                         <li>lokaal installeren</li>
                         <li>uittesten</li>
-                        <li>opnemen in functie</li>
                 </aside>
             </section>
-            <section>Opdracht: pas de testcode aan voor greyscale operatie</section>
+            <section>Opdracht: pas de jimp-operatie toe in je serverless functie.</section>
+            <section>Opdracht: pas de testcode aan. Verwacht, voor de 2pixels.png input file, de grijswaarde (terug te vinden op DigitAP).</section>
             <section>Authenticatie
                 <aside class="notes">
                     Oproep: <code>curl http://localhost:8080/function/image-processing -H "Authorization: Bearer
@@ -154,20 +154,18 @@
                 <aside class="info">Eigenlijk gewoon toevoeging uit cursustekst doen (onder "bouwen in een pipeline")
                 </aside>
             </section>
-
-            <!-- begin met het loggen van de headers
-                gewoon console.debug(event.headers) toevoegen
-                laten zien via faas-cli logs
-                dan https://docs.openfaas.com/reference/authentication/ → curl uittesten 
-                commando: curl http://localhost:8080/function/background-removal -H "Authorization: Bearer abcd"
-                code toevoegen om enkel dat stukje op te halen (gebruik voorbeeld van op DigitAP)
-                checken dat het werkt
-                switchen naar echt secret
-            -->
-
-            <!-- uitleggen hoe bare dockerfile te gebruiken als template? -->
-            <!-- zelf transparantie in orde laten brengen? -->
-
+            <section>UI als serverless functie
+                <aside class="notes">
+                    <ul>
+                        <li>vereist aangepaste template (voor file uploads)</li>
+                        <li>zou verder kunnen gaan in aanpassen template, of zou extra diensten kunnen gebruiken (AWS heeft er...)</li>
+                        <li>moeten beten hoe ze uploaded file omzetten naar base64 en omgekeerd</li>
+                    </ul>
+                </aside>
+            </section>
+            <section>
+                Opdracht: breid uit met optionele extra filter voor blur
+            </section>
         </div>
     </div>
 
