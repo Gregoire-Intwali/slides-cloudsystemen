@@ -20,12 +20,7 @@ Als je NodeJS op je systeem hebt, kan je dit doen:
 - Surf dan naar `localhost:8000` (zonder `index.html`).
 
 ### Eerste keer (Docker)
-Als je NodeJS niet lokaal hebt, doe je:
-
-- `git clone --recurse-submodules https://github.com/AP-IT-GH/slides-cloudsystemen.git; cd slides-cloudsystemen`
-- `docker build -t slidescloudsystemen:latest .`
-- `docker run -p <poortnummer naar keuze>:8000 slidescloudsystemen`
-- Surf dan naar `localhost:<poortnummer naar keuze uit de vorige stap>` (zonder `index.html`).
+TODO: moet aangepast worden, want gebruik Express impliceert dat NodeJS image gebruikt moet worden.
 
 ### PDF maken
 Indien je een printable versie van de slides wil, gebruik je `localhost:8000?print-pdf`.
