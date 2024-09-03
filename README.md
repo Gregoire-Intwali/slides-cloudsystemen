@@ -13,9 +13,25 @@ Dit start een web server die luistert naar poort 8000.
 
 ## Korte uitleg
 
-### Eerste keer
-`git clone --recurse-submodules https://github.com/AP-IT-GH/slides-cloudsystemen.git; cd slides-cloudsystemen; npm i; cd reveal.js; npm i; cd ..; node server.js labX`, waarbij `X` het nummer van het labo is.
-Surf dan naar `localhost:8000`.
+### Eerste keer (NodeJS)
+Als je NodeJS op je systeem hebt, kan je dit doen:
+
+- `git clone --recurse-submodules https://github.com/AP-IT-GH/slides-cloudsystemen.git; cd slides-cloudsystemen; npm i; cd reveal.js; npm i; cd ..; node server.js labX`, waarbij `X` het nummer van het labo is.
+- Surf dan naar `localhost:8000` (zonder `index.html`).
+
+### Eerste keer (Docker)
+Als je NodeJS niet lokaal hebt, doe je:
+
+- `git clone --recurse-submodules https://github.com/AP-IT-GH/slides-cloudsystemen.git; cd slides-cloudsystemen`
+- `docker build -t slidescloudsystemen:latest .`
+- `docker run -p <poortnummer naar keuze>:8000 slidescloudsystemen`
+- Surf dan naar `localhost:<poortnummer naar keuze uit de vorige stap>` (zonder `index.html`).
+
+### PDF maken
+Indien je een printable versie van de slides wil, gebruik je `localhost:8000?print-pdf`.
+Dan gewoon via het printvenster van je browser printen.
+Met de meeste browsers is dit CTRL-P.
+Pas de settings aan om de gewenste weergave te verkrijgen (bv. wel/geen styling, zorgen dat slides mooi op één pagina passen,...).
 
 ### Updaten
 `git pull`

@@ -1,14 +1,32 @@
-/* This script allows serving presentations outside the Reveal.js source folder without making any changes to the Reveal.js files. */
+/* Officiële Reveal docs doen uitschijnen dat het nodig is de broncode te klonen en aan te passen per presentatie.
+ * Dit script staat toe presentaties buiten die folder te plaatsen.
+ * Zo blijft code van Reveal.js zelf gescheiden van code slides.
+ */
 const express = require('express');
+const ejs = require('ejs');
+const fs = require('fs');
 const path = require('path');
 const app = express();
-const port = 8000; // You can use any available port
+const port = 8000;
 
-app.use(express.static(path.join(__dirname, process.argv[2])));
-// presentations contain paths that lead up to root and then down in reveal.js folder
+const staticDir = path.join(__dirname, process.argv[2]);
+
+app.get('/', (req, res, next) => {
+    const filePath = path.join(staticDir, req.path, "index.html");
+    console.debug(filePath);
+    ejs.renderFile(
+        filePath,
+        { folderName: process.argv[2] },
+        (err, str) => {
+            if (err) return next(err);
+            res.send(str);
+        });
+});
+
+// afbeeldingen en Reveal moeten ook geserveerd worden!
+app.use(express.static(staticDir));
 app.use(express.static("."));
 
-
 app.listen(port, () => {
-  console.log(`Listening on http://localhost:${port} with static dir ${path.join(__dirname, process.argv[2])}`);
+    console.log(`Listening on http://localhost:${port} with static dir ${path.join(__dirname, process.argv[2])}`);
 });
