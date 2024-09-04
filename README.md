@@ -30,3 +30,8 @@ Pas de settings aan om de gewenste weergave te verkrijgen (bv. wel/geen styling,
 
 ### Updaten
 `git pull`
+
+### Nieuwe presentaties maken
+Voeg een map toe met daarin een `index.md`.
+Schrijf daarin Markdown compatibel met Reveal.js.
+Geen extra `<section>` of `<script>` of `<textarea>`, gewoon de Markdown.
