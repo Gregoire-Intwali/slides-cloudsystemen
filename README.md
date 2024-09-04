@@ -16,7 +16,7 @@ Dit start een web server die luistert naar poort 8000.
 ### Eerste keer (NodeJS)
 Als je NodeJS op je systeem hebt, kan je dit doen:
 
-- `git clone --recurse-submodules https://github.com/AP-IT-GH/slides-cloudsystemen.git; cd slides-cloudsystemen; npm i; cd reveal.js; npm i; cd ..; node server.js labX`, waarbij `X` het nummer van het labo is.
+- `git clone --recurse-submodules git@github.com/AP-IT-GH/slides-cloudsystemen.git; cd slides-cloudsystemen; npm i; cd reveal.js; npm i; cd ..; node server.js labX`, waarbij `X` het nummer van het labo is.
 - Surf dan naar `localhost:8000` (zonder `index.html`).
 
 ### Eerste keer (Docker)
