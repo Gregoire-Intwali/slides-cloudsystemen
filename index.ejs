@@ -4,11 +4,19 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title><%= folderName %></title>
+    <title>
+        <%= folderName %>
+    </title>
     <link rel="stylesheet" href="../reveal.js/dist/reset.css">
     <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
     <link rel="stylesheet" href="../reveal.js/dist/theme/black.css">
     <link rel="stylesheet" href="../reveal.js/plugin/highlight/monokai.css">
+    <style>
+        section.no-screens-slide::after {
+            content: "Laptops dicht" "\A" "GSM's weg";
+            white-space: preserve-breaks;
+        }
+    </style>
 </head>
 
 <body>
@@ -33,4 +41,5 @@
         });
     </script>
 </body>
+
 </html>

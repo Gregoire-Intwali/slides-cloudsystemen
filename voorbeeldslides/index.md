@@ -15,3 +15,5 @@
 ---
 <!-- .slide: data-background="#ff0000" -->
 Markdown content
+---
+<!-- .slide: class="no-screens-slide" -->
