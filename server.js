@@ -15,9 +15,11 @@ const templateFilePath = "index.ejs";
 app.get('/', (req, res, next) => {
     const contentFilePath = path.join(staticDir, req.path, "index.md");
     const markdownContent = fs.readFileSync(contentFilePath, 'utf8');
+    const rawFolderName = process.argv[2];
+    const folderName = rawFolderName.endsWith("/") || rawFolderName.endsWith("\\") ? rawFolderName.slice(0, -1) : rawFolderName;
     ejs.renderFile(
         templateFilePath,
-        { markdownContent, folderName: process.argv[2] },
+        { markdownContent, folderName: folderName },
         (err, str) => {
             if (err) return next(err);
             res.send(str);
