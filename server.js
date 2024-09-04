@@ -10,13 +10,14 @@ const app = express();
 const port = 8000;
 
 const staticDir = path.join(__dirname, process.argv[2]);
+const templateFilePath = "index.ejs";
 
 app.get('/', (req, res, next) => {
-    const filePath = path.join(staticDir, req.path, "index.html");
-    console.debug(filePath);
+    const contentFilePath = path.join(staticDir, req.path, "index.md");
+    const markdownContent = fs.readFileSync(contentFilePath, 'utf8');
     ejs.renderFile(
-        filePath,
-        { folderName: process.argv[2] },
+        templateFilePath,
+        { markdownContent, folderName: process.argv[2] },
         (err, str) => {
             if (err) return next(err);
             res.send(str);
