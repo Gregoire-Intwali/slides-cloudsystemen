@@ -1,4 +1,7 @@
 # Markdown slide 1
+
+note:
+Normaal werkt dit voor speaker notes
 ---
 - Item 1 <!-- .element: class="fragment" data-fragment-index="2" -->
 - Item 2 <!-- .element: class="fragment" data-fragment-index="1" -->
