@@ -411,3 +411,13 @@ note:
 - kan gebruikt worden om aparte web servers op zelfde machine te runnen
 - kan gebruikt worden om HTTPS te voorzien wanneer de web servers dit zelf niet ingebouwd hebben
 - je zal er zo eentje voorzien voor je projectopdracht
+- **veronderstel in code niet dat je rechtstreeks met de andere partij spreekt!**
+---
+- Lees [deze pagina](https://docs.mitmproxy.org/stable/concepts-modes/#reverse-proxy) tot en met "Listen port"
+- Zorg dat HTTP-verkeer naar localhost:8080 wordt omgeleid naar neverssl.com via de terminalversie van `mitmproxy`
+- Configureer de reverse proxy om requests te onderscheppen.
+- Stuur een request naar localhost:8080 met curl (zonder `--proxy` in het commando!).
+- Zie je iets in je MITM venster?
+- Wat gebeurt er als je rechtstreeks naar http://neverssl.com gaat met curl?
+  - (Met je browser zie je dit niet altijd omwille van caching.)
+
