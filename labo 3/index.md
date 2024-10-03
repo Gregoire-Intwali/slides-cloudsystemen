@@ -48,6 +48,7 @@ Caching
 
 note:
 - DNS-records hebben een TTL
+- "non-authoritative" = afkomstig uit een cache, niet recht van de bron
 ---
 Load balancing
 
@@ -55,31 +56,15 @@ note:
 - voor wanneer meerdere servers dezelfde dienst aanbeiden
 - heel makkelijk: gewoon afwisselend andere antwoorden geven op queries
 ---
-Forward en reverse DNS lookup
-
-note:
-- reverse gaat **regelmatig**, maar niet **altijd**
-- hangt af van configuratie, het is geen kwestie van gewoon spiegelen
----
 - Open het Wireshark bestand DNS1 van op DigitAP
 - Stel een filter in zodat je enkel HTTP en DNS ziet
   - Een OR van filters doe je met `||`
 - Beantwoord volgende vragen:
-  - In welke richting verloopt de lookup?
   - Wat is het IP-adres van de DNS server die bevraagd wordt?
   - Hoeveel IP adressen worden er door de DNS server gevonden voor host www.ietf.org?
   - Welke adressen zijn dit?
   - Welk wordt uiteindelijk door de host gebruikt om te surfen?
   - Hoe lang mag de host dit adres beschouwen als geldig?
----
-- Open het Wireshark bestand DNS2 van op DigitAP
-- Beantwoord volgende vragen
-  - In welke richting verloopt de lookup?
-  - Wat is het IP-adres van de DNS server die bevraagd wordt?
-  - Hoe veel antwoorden zitten er in de DNS response?
-  - Met welke namen komt het adres 199.8.163.13 overeen?
-  - Kom je met al deze namen op een website terecht?
-  - Is het steeds dezelfde website?
 ---
 - Om een DNS server te bevragen, gebruik je `nslookup`
   - Mogelijk moet je hiervoor je Windows Terminal als admin openen
@@ -109,7 +94,7 @@ note:
 - CNAME
 - MX
 - NS
-- SOA
+  - SOA
 
 note:
 - belangrijkste records voor programmeurs
@@ -122,12 +107,11 @@ note:
 - MX = geassocieerde mail server (als je er zelf een hebt)
 - NS = domeinnaam van een name server voor een domein
   - als je zelf alle namen onder een domein wil kunnen beheren
+- SOA is vooral belangrijk als je een eigen zone managet, bevat zaken zoals contactadres beheerder en TTL
 ---
 ![voorbeeld DNS in GoDaddy](./afbeeldingen/voorbeeld-dns-godaddy.png)
 ---
-- Klassikale opdracht
-- Neem over
-- Daarna individuele uitbreiding
+Klassikale opdracht
 
 note:
 - klanten.netnoobs.be en bestellingen.netnoobs.be bereikbaar maken
@@ -136,7 +120,7 @@ note:
 - daarna vanaf .be name server
 - doorgaan tot het lukt vanaf clients
 ---
-Uitbreiding: bezoekers.netnoobs.nl
+Uitbreiding: winkelen.netnoobs.nl
 ---
 ## SSH
 
@@ -150,7 +134,7 @@ note:
 - klassiek gebruik = shell opstarten, maar ook voor Github, voor remote sessie VSC,...
   - alomtegenwoordig in cloud infrastructuur!
 ---
-Aan de slag! Gegeven:
+Gegeven:
 
 - server IP (zelfde voor iedereen)
 - container ID (individueel)
@@ -195,78 +179,42 @@ note:
   - te veel verschillende sleutels en geen config ⇒ te veel pogingen, weigering
 ---
 
-                <code>scp</code>
-            <section>
-                <ul>
-                    <li><code>scp /path/to/local/file username@remotehost:/path/to/remote/directory
-                        </code></li>
-                    <li><code>scp username@remotehost:/path/to/remote/file /path/to/local/directory
-                        </code></li>
-                </ul>
-                <aside class="notes">
-                    <ul>
-                        <li>Op Linux begint een filesysteem bij <code>/</code>, niet <code>C:</code></li>
-                        <li>forward slash ipv backslash</li>
-                    </ul>
-                </aside>
-            </section>
-            <section>
-                <section>Opdracht (Git bash)</section>
-                <section>
-                    <ol>
-                        <li>sleutelpaar aanmaken: <code>ssh-keygen -t rsa -b 4096</code> met defaults en lege
-                            passphrase</li>
-                        <li>kijk in (verborgen map) <code>.ssh</code></li>
-                        <li>kopieer naar server: <code>ssh-copy-id -i ~/.ssh/id_rsa.pub username@remotehost</code>
-                        </li>
-                        <ul>
-                            <li>dit combineert <code>scp</code> met een append</li>
-                        </ul>
-                        <li>log in op de server</li>
-                        <li><code>chmod 700 ~/.ssh</code> beperkt rechten map</li>
-                        <li><code>chmod 600 ~/.ssh/authorized_keys</code> beperkt rechten file</li>
-                        <li>test login zonder wachtwoord</li>
-                        <li>registreer public key in Github</li>
-                        <li>maak een niet-lege repo, clone via SSH, commit iets, push</li>
-                    </ol>
-                </section>
+- `scp /path/to/local/file username@remotehost:/path/to/remote/directory`
+- `scp username@remotehost:/path/to/remote/file /path/to/local/directory`
 
-
-
-
-
-
-
-
-
-
-
-            <section>
-                <p>Tijdelijk mailadres</p>
-                <img src="./images/tempmail.png" alt="screenshot temp mail" width="500px" />
-                <aside class="notes">
-                    <ul>
-                        <li>geen "leerstof"</li>
-                        <li>wel heel nuttig</li>
-                        <li>kwestie van privacy en digitale hygiëne</li>
-                    </ul>
-                </aside>
-            </section>
-            <section>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/dm8i4IFTA7k?si=oG083hSw_HZHSzG2"
-                    title="YouTube video player" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen></iframe>
-                <aside class="notes">
-                    <ul>
-                        <li>aanzienlijke beperkingen, maar gratis en geen CC vereist</li>
-                        <li>kan ook TLS koppelen</li>
-                        <li>wij doen dit vandaag niet omwille van de setup</li>
-                        <li>zou wel gaan als ieder eigen VPS had</li>
-                    </ul>
-                </aside>
-            </section>
-
+note:
+- Op Linux begint een filesysteem bij `/`, niet `C:`
+- forward slash ipv backslash
 ---
-TODO
-- mogelijk om met proxy en reverse proxy te werken in PT?
+Opdracht (Git bash)
+- sleutelpaar aanmaken: `ssh-keygen -t rsa -b 4096` met defaults en lege passphrase
+- kijk in (verborgen map) `.ssh`
+- kopieer naar server: `ssh-copy-id -i ~/.ssh/id_rsa.pub username@remotehost`
+  - dit combineert `scp` met een append in `authorized_keys`
+- log in op de server
+- `chmod 700 ~/.ssh` beperkt rechten op deze map
+- `chmod 600 ~/.ssh/authorized_keys` beperkt rechten file
+- test login zonder wachtwoord
+- registreer public key in Github
+- maak een niet-lege repo, clone via SSH, commit iets, push
+---
+
+![temp mail](./afbeeldingen/tempmail.png)
+
+note:
+
+- geen "leerstof"
+- wel heel nuttig
+- kwestie van privacy en digitale hygiëne
+---
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/dm8i4IFTA7k?si=oG083hSw_HZHSzG2"
+    title="YouTube video player" frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen></iframe>
+
+note:
+- aanzienlijke beperkingen, maar gratis en geen CC vereist
+- kan ook TLS koppelen
+- wij doen dit vandaag niet omwille van de setup
+- zou wel gaan als ieder eigen VPS had (zoals met opdracht Azure!)

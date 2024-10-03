@@ -23,10 +23,10 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="pt"
      inkscape:zoom="1.4598837"
-     inkscape:cx="359.96018"
-     inkscape:cy="286.66667"
-     inkscape:window-width="3440"
-     inkscape:window-height="1371"
+     inkscape:cx="283.92673"
+     inkscape:cy="451.06333"
+     inkscape:window-width="1536"
+     inkscape:window-height="795"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -127,7 +127,7 @@
        x="190.48772"
        y="48.574749"
        id="tspan1348"
-       style="stroke:#ffffff;stroke-opacity:1">Domain Name Space</tspan></text>
+       style="fill:#f9f9f9;stroke:#ffffff;stroke-opacity:1">Domain Name Space</tspan></text>
   <g
      transform="matrix(0.555556,0,0,0.555556,27.87907,13.9244)"
      id="g2264"
@@ -211,11 +211,11 @@
        x="455.65686"
        y="360.34787"
        id="tspan2510"
-       style="font-weight:bold;stroke:#ffffff;stroke-opacity:1">resource records</tspan><tspan
+       style="font-weight:bold;fill:#f9f9f9;stroke:#ffffff;stroke-opacity:1">resource records</tspan><tspan
        x="455.65686"
        y="375.34787"
        id="tspan2512"
-       style="stroke:#ffffff;stroke-opacity:1">associated with name</tspan></text>
+       style="fill:#f9f9f9;stroke:#ffffff;stroke-opacity:1">associated with name</tspan></text>
   <g
      transform="matrix(0.555556,0,0,0.555556,66.37905,-100.5757)"
      id="g2514"
@@ -879,15 +879,15 @@
        x="455.65686"
        y="424.34787"
        id="tspan3364"
-       style="stroke:#ffffff;stroke-opacity:1"><tspan
+       style="fill:#f9f9f9;stroke:#ffffff;stroke-opacity:1"><tspan
    id="tspan3376"
-   style="font-weight:bold;stroke:#ffffff;stroke-opacity:1">zone</tspan> of authority,</tspan><tspan
+   style="font-weight:bold;fill:#f9f9f9;stroke:#ffffff;stroke-opacity:1">zone</tspan> of authority,</tspan><tspan
        x="455.65686"
        y="439.34787"
        id="tspan3366"
-       style="stroke:#ffffff;stroke-opacity:1">managed by a <tspan
+       style="fill:#f9f9f9;stroke:#ffffff;stroke-opacity:1">managed by a <tspan
    id="tspan4554"
-   style="font-weight:bold;stroke:#ffffff;stroke-opacity:1">name server</tspan></tspan></text>
+   style="font-weight:bold;fill:#f9f9f9;stroke:#ffffff;stroke-opacity:1">name server</tspan></tspan></text>
   <path
      d="m 83.656854,432.34788 28.999996,49"
      id="path3504"
@@ -948,7 +948,7 @@
        x="-294.9339"
        y="286.57416"
        id="tspan3498"
-       style="stroke:#ffffff;stroke-opacity:1">&quot;zone delegation&quot;</tspan></text>
+       style="fill:#f9f9f9;stroke:#ffffff;stroke-opacity:1">&quot;zone delegation&quot;</tspan></text>
   <g
      transform="matrix(0.555556,0,0,0.555556,24.37905,233.4243)"
      id="g3506"
