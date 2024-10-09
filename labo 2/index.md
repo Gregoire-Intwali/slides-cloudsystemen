@@ -189,7 +189,7 @@ note:
   - Wanneer werd de website bezocht?
   - Welke font wordt er op de website gebruikt?
 ---
-- Open [cheat sheet curl](https://gist.github.com/subfuzion/08c5d85437d5d4f00e58")
+- Open [cheat sheet curl](https://devhints.io/curl)
 - Start een trace in Wireshark.
 - Doe met curl een POST request naar het pad `post` van de website `https://httpbin.org`. Geef met de `accept` aan dat het antwoordtype `application/json` moet zijn.
 - Stop de trace.

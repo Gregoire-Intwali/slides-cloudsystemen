@@ -54,6 +54,7 @@ note:
 note:
 - "convenience" tool die herhaaldelijk `git checkout` gebruikt om bron van een probleem op te sporen
 - bewijsbaar optimale aanpak
+- sluit af met `git bisect reset`
 ---
 `.gitignore`
 
