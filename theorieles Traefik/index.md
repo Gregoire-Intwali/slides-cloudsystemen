@@ -1,27 +1,3 @@
-Workshop (deel 3)
-
-note:
-- Azure Container Instance ≅ Amazon ECS
- - meer "managed"
-- Azure Virtual Machines ≅ Amazon EC2
- - meer eigen controle, maar ook meer eigen werk
-- Doorlopen "Deploy a Docker image to an Azure Container Instance". Niet overal hetzelfde als in schriftelijke uitleg ⇒ vraag het aan de lector!
-- Wissen resource group op het einde: moet specifiek op detailpagina van die groep staan.
----
-[Oefening](https://github.com/v-nys/BaseApp)
-
-note:
-- hou geheime info uit versiebeheer d.m.v. een file met omgevingsvariabelen!
----
-Docker (Compose) op Azure Virtual Machines
-
-note:
-- neem eerdere applicatie als voorbeeld
-- maak een VM aan
-- installeer Docker met Compose
-- zorg dat alle nodige bestanden op de VM staan (`scp` of `git`)
-- controleer dat de applicatie bereikbaar is
----
 Traefik
 
 note:
@@ -30,6 +6,8 @@ note:
   - kan deze gebruiken om de juiste achterliggende service aan te spreken
   - verschillende voordelen
     - extra tussenstop is handig voor monitoren / beveiligen / ... diensten
+    - load balancing
+    - zero-downtime redeployment
     - mogelijk meerdere applicaties op dezelfde server te runnen zonder dat gebruiker hier iets van merkt (domeinnamen zijn anders)
     - kan dit via configuratiefile **of** door metadata die aan containers wordt gekoppeld ("labels")
 - **erg uitgebreid, we bekijken gewoon basis**
@@ -85,8 +63,6 @@ services:
       - "8080:8080" # web UI, kan door api.insecure=true
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-  # labels zijn voor metadata
-  # Traefik kan deze uitlezen (omwille van docker.sock)
   whoami:
     image: traefik/whoami
     labels:
@@ -100,10 +76,7 @@ note:
 - check met `docker inspect`
 - check ook via web UI
   - Docker provider ⇒ metadata van hierboven wordt gebruikt om regel te communiceren naar Traefik
----
-Oefening:
-- zorg dat een Apache web server toegankelijk is via mywebsite.localhost
-- zorg dat hier een eigen indexpagina in staat, niet de default
+- voeg een extra Docker service toe voor een Apache web server, toon ook dat naam Docker Compose service ≠ naam router ≠ naam Traefik service (of toch niet noodzakelijk)
 ---
 ![statische en dynamische configuratie](./afbeeldingen/static-dynamic-configuration.png)
 
@@ -118,7 +91,7 @@ note:
   - CLI
   - YAML file
   - omgevingsvariabelen
-- eerdere voorbeelden gebruikten CLI: `providers.docker`
+- eerdere voorbeelden gebruikten CLI: `--providers.docker`
   - veel meer opties: https://doc.traefik.io/traefik/reference/static-configuration/cli/
   - entrypoint HTTP is er sowieso, "traefik" komt van insecure API
 ---
@@ -126,10 +99,30 @@ Dynamische configuratie
 
 note:
 - veel concepten: bekijk in termen van "hoe komt iets binnen en waar moet het naartoe?"
-- we bespreken hier alleen dynamische configuratie via file en met Docker (inclusief Compose); er zijn andere manieren
+- zullen voorbeelden vaak geven via Docker labels
   - vereist toegang tot Docker socket
     - dit omvat eigenlijk een security risico (succesvolle aanval op Traefik = op heel de **host**)
       - workarounds in Traefik docs, kan ook via dynamische config file werken
+      - nuttig om meerdere syntaxen te kunnen lezen, dan kan je voorbeeldcode omzetten
+- ga even terug, duid aan van waar de statische configuratie komt en van waar de dynamische
+  - Compose file zelf is geen Traefik configuratie!
+- rule priority: langere regel = hogere prioriteit, specifiekere regel krijgt dus voorrang!
+---
+Handig truukje voor op Jinja
+
+note:
+- Jinja VM's laten alleen poorten 22, 80 en 443 open
+- Traefik web UI is by default op poort 8080, zie eerdere docker-compose.yaml
+  - laat voorlopig aan staan
+- bekijk rules over dit entrypoint in web UI: `PathPrefix(\`/\`)` en `PathPrefix(\`/api\`)`
+- voeg uiteindelijk toe:
+
+```
+labels:
+  - "traefik.http.routers.webui.rule=PathPrefix(`/dashboard`)"
+  - "traefik.http.routers.api.rule=PathPrefix(`/api`)"
+  - "traefik.http.services.traefik-experiments-reverse-proxy.loadbalancer.server.port=8080"
+```
 ---
 ![overzicht architectuur Traefik](./afbeeldingen/architecture-overview.png)
 note:
@@ -163,7 +156,7 @@ http:
         - user:hashcode
   services:
     whoami:
-      loadBalancer: # zie Traefik docs
+      loadBalancer: # één Traefik service, mogelijk meerdere containers
         servers:
         - url: http://private/whoami-service
 ```
@@ -172,29 +165,15 @@ note:
 - vergelijk met onderdelen dashboard
 - htpasswd staat op httpd images
 ---
-Oefening
-
-note:
-- start deze config samen met website in Docker Compose
-- gebruik example.localhost in plaats van example.com
-- zie Docker Hub voor gebruik statische config file
----
 TLS (manueel)
 
 note:
+- toon traefik.me
 - gebruikt poort 443, dus vereist extra entrypoint
 - router omvat een sectie `tls` met waarde `{}` (geen opties)
 - sectie voor het **protocol** TLS omvat `certificates`, zie "User defined" gedeelte in docs HTTPS & TLS → TLS
   - genoeg om "cert" en "privkey" van traefik.me te halen en als enige certificate / private key pair te voorzien, andere files niet nodig
----
-Oefening
-
-note:
-- deploy eigen site op een Azure VM
-- haal certificates en keys van Traefik.me
-- **niet alle poorten zijn altijd bruikbaar, bv. web UI gebruikt 8080...**
-- kunnen files gewoon periodiek updaten via script
-  - **nadeel**: andere ....traefik.me sites kunnen zelfde certificaat gebruiken!
+  - kan via cron
 ---
 TLS (automatisch)
 
@@ -205,10 +184,23 @@ note:
     - start eerst met de staging server!
   - optie certresolver in dynamische config
   - initieel lege acme.json file (moet containers overleven) met permissies 600
+- waarschuwing rond "onveilige website", maar bekijk de details: **er is een certificaat**
 ---
-Oefening
+De documentatie
 
 note:
-- registreer een gratis domeinnaam (FreeDNS, DuckDNS,...) voor je Azure machine
-- configureer automatische aanvraag en renewal LetsEncrypt, eerst met de test service
-- switch uiteindelijk naar echte service
+- uitstekende kwaliteit
+- voorbeelden in verschillende formaten, de moeite waard om te weten wat ze zijn zodat je kan vertalen naar jouw setting
+- 
+---
+Middleware en plugins
+
+note:
+- hier kan overlap zijn qua functionaliteit
+- aantal voorbeelden:
+  - Middleware: BasicAuth
+  - Middleware: Compression
+  - Middleware: StripPrefix
+  - Plugin: Real IP from Cloudflare
+  - Plugin: Simple cache
+  - Plugin: theme.park om meerdere apps uniform te themen
