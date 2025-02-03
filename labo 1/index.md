@@ -48,7 +48,6 @@ note:
 - steeds gesloten boek met vooraf gedeelde cheat sheets
 - projectopdracht doorheen de weken
   - stap 1 **meteen** tegen volgende keer: registreer op Azure, check je credits, documenteer of contacteer mij in geval van problemen
-  - einde semester mondelinge verdediging
   - feedback: *in de les* na de deadline (niet via DigitAP, jullie noteren)
   - cijfer projectopdracht pas op het einde
 ---
@@ -140,7 +139,7 @@ Ping
 
 - Windows: `ping /?`
 - Mac / Linux: `man ping`
-- geblokkeerd op AP-wifi en Eduroam, maar eigenlijk ongevaarlijk
+- geblokkeerd op AP-wifi en Eduroam, maar eigenlijk ongevaarlijk; kan op Bletchley
 
 note:
 - iemand die de term van ergens kent?
@@ -150,7 +149,7 @@ note:
 ---
 Opdracht
 
-- zoek een online ping tool (`ping.eu`,...)
+- verbind met Bletchley of zoek een online ping tool (`ping.eu`,...)
 - ping volgende adressen:
   - www.marian.edu
   - telenet.be
@@ -175,7 +174,7 @@ note:
 ---
 Opdracht
 
-- zoek, opnieuw met online tool, de weg naar:
+- zoek, opnieuw via Bletchley of met online tool, de weg naar:
   - www.marian.edu
   - telenet.be
 - noteer een antwoord op volgende vragen:
