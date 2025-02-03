@@ -40,10 +40,6 @@ note:
 - Gitbook cursus: de technische inhoud
 - DigitAP: praktische kant
 - Van jullie verwacht naast laptop: pen en papier
-- **Poging tot** opnames in avondgroep
-  - enkel laptopscherm met slides
-  - niet gemonteerd
-  - geluid is degelijk, maar in het verleden al wel eens weggevallen halverwege opname ⇒ jammer
 ---
 Evaluatie
 
@@ -62,21 +58,20 @@ note:
 - niet verplicht
 - niet aanwezig ⇒ geen feedback, ook niet via mail of volgende keer
 - deur dicht = deur dicht
-  - verwittig op zijn minst op voorhand
+  - je onderbreekt niet
+  - je gaat gewoon voor het raam staan en je wacht tot de lector open doet
 ---
-Over "laptops dicht"
+Materiaal en notities
 
 note:
 - geen eenvoudig vak
 - alle stof staat in Gitbook en op DigitAP, dus niet nodig digitaal notities te nemen
 - met pen en papier noteren als je dat graag doet (maar dus sowieso meebrengen)
-- avond: voordeel van de twijfel, ga veronderstellen dat de focus bij de taak is tenzij tegendeel bewezen
 ---
 Timing
 
 note:
 - start stipt
-- in de avond: 10m pauze, 10m op voorhand begin ik af te ronden
 ---
 Communicatie
 
