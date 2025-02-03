@@ -16,11 +16,11 @@ Dit start een web server die luistert naar poort 8000.
 ### Eerste keer (NodeJS)
 Als je NodeJS op je systeem hebt, kan je dit doen:
 
-- `git clone --recurse-submodules git@github.com:AP-IT-GH/slides-cloudsystemen.git; cd slides-cloudsystemen; npm i; cd reveal.js; npm i; cd ..; node server.js labX`, waarbij `X` het nummer van het labo is.
+- `git clone git@github.com:AP-IT-GH/slides-cloudsystemen.git; cd slides-cloudsystemen; npm i; node server.js labo X`, waarbij `X` het nummer van het labo is.
 - Surf dan naar `localhost:8000` (zonder `index.html`).
 
-### Eerste keer (Docker)
-TODO: moet aangepast worden, want gebruik Express impliceert dat NodeJS image gebruikt moet worden.
+### Eerste keer (Dev container)
+Open de root folder met Visual Studio Code. Als je de dev container extensie hebt, krijg je vanzelf de optie om een dev container te starten. In die container run je `node server.js labo X`, waarbij `X` het nummer van het labo is.
 
 ### PDF maken
 Indien je een printable versie van de slides wil, gebruik je `localhost:8000?print-pdf`.

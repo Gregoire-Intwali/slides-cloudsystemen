@@ -29,6 +29,7 @@ app.get('/', (req, res, next) => {
 // afbeeldingen en Reveal moeten ook geserveerd worden!
 app.use(express.static(staticDir));
 app.use(express.static("."));
+app.use("/reveal.js", express.static(__dirname + "/node_modules/reveal.js"))
 
 app.listen(port, () => {
     console.log(`Listening on http://localhost:${port} with static dir ${path.join(__dirname, process.argv[2])}`);
