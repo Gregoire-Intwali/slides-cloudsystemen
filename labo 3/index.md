@@ -53,7 +53,7 @@ note:
 Load balancing
 
 note:
-- voor wanneer meerdere servers dezelfde dienst aanbeiden
+- voor wanneer meerdere servers dezelfde dienst aanbieden 
 - heel makkelijk: gewoon afwisselend andere antwoorden geven op queries
 ---
 - Open het Wireshark bestand DNS1 van op DigitAP
